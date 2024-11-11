@@ -1,4 +1,4 @@
-# Identity and Access Management (Terrafrom)
+# Identity and Access Management (Terraform)
 
 Scenario:
 
