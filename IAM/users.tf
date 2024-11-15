@@ -1,9 +1,9 @@
 # Creating S3 bucket 
-resource "aws_s3_bucket" "IAM-Config-bucket" {
-  bucket = "IAM-Config-bucket"
+resource "aws_s3_bucket" "iam-config-bucket" {
+  bucket = "iam-config-bucket"
 
   tags = {
-    Name        = "IAM-Config-buckett"
+    Name        = "iam-config-bucket"
   }
 }
 
@@ -53,6 +53,8 @@ resource "aws_iam_group" "Data Analyts" {
 
 
 # creating Policies for Developers group 
+# S3 full access
+# CloudWatch Logs
 
 resource "aws_iam_group_policy" "developer-group-policy" {
   name  = "developer-group-policy"
@@ -64,10 +66,25 @@ resource "aws_iam_group_policy" "developer-group-policy" {
     Statement = [
       {
         Action = [
-          "ec2:Describe*",
+          "s3*",
         ]
         Effect   = "Allow"
-        Resource = "*"
+        Resource = "arn:aws:s3:::iam-config-bucket"
+      },
+      {
+        Action = [
+          "s3*",
+          "logs:*"
+        ]
+        Effect   = "Allow"
+        Resource = []
+      },
+      {
+        Action = [
+          "ec2:*",
+        ]
+        Effect   = "Allow"
+        Resource = "arn:aws:s3:::iam-config-bucket"
       },
     ]
   })
@@ -84,10 +101,10 @@ resource "aws_iam_group_policy" "Operations-group-policy" {
     Statement = [
       {
         Action = [
-          "ec2:Describe*",
+          "s3*",
         ]
         Effect   = "Allow"
-        Resource = "*"
+        Resource = "arn:aws:s3:::iam-config-bucket"
       },
     ]
   })
@@ -128,7 +145,7 @@ resource "aws_iam_group_policy" "Data-Analyts-group-policy" {
           "ec2:Describe*",
         ]
         Effect   = "Allow"
-        Resource = "*"
+        Resource = ""
       },
     ]
   })
