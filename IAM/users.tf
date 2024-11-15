@@ -1,3 +1,16 @@
+# Creating S3 bucket 
+resource "aws_s3_bucket" "IAM-Config-bucket" {
+  bucket = "IAM-Config-bucket"
+
+  tags = {
+    Name        = "IAM-Config-buckett"
+  }
+}
+
+
+
+
+
 # Creating a strong password policy 
 
 resource "aws_iam_account_password_policy" "password-policy" {
