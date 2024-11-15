@@ -135,10 +135,17 @@ resource "aws_iam_group_policy" "Finance-manager-group-policy" {
     Statement = [
       {
         Action = [
-          "ec2:Describe*",
+          "ce:*",
         ]
         Effect   = "Allow"
         Resource = "*"
+      },
+      {
+        Action = [
+          "budgets:*",
+        ]
+        Effect   = "Allow"
+        Resource = []
       },
     ]
   })
