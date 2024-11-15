@@ -163,10 +163,27 @@ resource "aws_iam_group_policy" "Data-Analyts-group-policy" {
     Statement = [
       {
         Action = [
-          "ec2:Describe*",
+        "s3:Get*",
+        "s3:List*",
+        "s3:Describe*"
         ]
         Effect   = "Allow"
-        Resource = ""
+        Resource = []
+      },
+        {
+        Action = [
+        "rds:Describe*",
+        "rds:ListTagsForResource",
+        "ec2:DescribeAccountAttributes",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeInternetGateways",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeVpcs"
+        ]
+        Effect   = "Allow"
+        Resource = []
       },
     ]
   })
