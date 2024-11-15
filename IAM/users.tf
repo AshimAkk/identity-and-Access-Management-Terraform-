@@ -69,7 +69,7 @@ resource "aws_iam_group_policy" "developer-group-policy" {
           "s3*",
         ]
         Effect   = "Allow"
-        Resource = "arn:aws:s3:::iam-config-bucket"
+        Resource = "[]"
       },
       {
         Action = [
@@ -84,7 +84,7 @@ resource "aws_iam_group_policy" "developer-group-policy" {
           "ec2:*",
         ]
         Effect   = "Allow"
-        Resource = "arn:aws:s3:::iam-config-bucket"
+        Resource = []
       },
     ]
   })
@@ -101,10 +101,24 @@ resource "aws_iam_group_policy" "Operations-group-policy" {
     Statement = [
       {
         Action = [
-          "s3*",
+          "ec2:*",
         ]
         Effect   = "Allow"
-        Resource = "arn:aws:s3:::iam-config-bucket"
+        Resource = []
+      },
+      {
+        Action = [
+          "cloudwatch:*",
+        ]
+        Effect   = "Allow"
+        Resource = []
+      },
+      {
+        Action = [
+          "rds:*",
+        ]
+        Effect   = "Allow"
+        Resource = []
       },
     ]
   })
