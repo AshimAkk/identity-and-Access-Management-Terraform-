@@ -190,3 +190,16 @@ resource "aws_iam_group_policy" "Data-Analyts-group-policy" {
 }
 
 
+# creating IAM Users
+
+resource "aws_iam_user" "Bob-iam-user" {
+  name = "Bob-iam-user"
+  path = "/"
+
+}
+
+resource "aws_iam_user_policy" "bob-user-policy" {
+  name   = "bob-user-policy"
+  user   = aws_iam_user.Bob-iam-user.name
+  policy = data.aws_iam_policy_document.Developers.jsonencode
+}
